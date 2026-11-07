@@ -1,0 +1,61 @@
+/* =====================================================================
+   Tipografías (se sirven desde el propio servidor, sin depender de internet)
+   Fraunces: títulos · Nunito Sans: texto
+   Los archivos vienen de los paquetes @fontsource instalados con npm.
+   ===================================================================== */
+
+@font-face {
+    font-family: 'Fraunces';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/vendor/fuentes/fraunces/files/fraunces-latin-600-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Fraunces';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/vendor/fuentes/fraunces/files/fraunces-latin-700-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Fraunces';
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/vendor/fuentes/fraunces/files/fraunces-latin-600-italic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/vendor/fuentes/nunito-sans/files/nunito-sans-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/vendor/fuentes/nunito-sans/files/nunito-sans-latin-600-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/vendor/fuentes/nunito-sans/files/nunito-sans-latin-700-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('/vendor/fuentes/nunito-sans/files/nunito-sans-latin-800-normal.woff2') format('woff2');
+}

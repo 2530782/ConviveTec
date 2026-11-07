@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Dos círculos que se encuentran, símbolo de empatía">
+  <rect width="640" height="360" fill="#fbe1d9"/>
+  <circle cx="260" cy="180" r="110" fill="#e2674a" opacity=".85"/>
+  <circle cx="380" cy="180" r="110" fill="#1b6b63" opacity=".85"/>
+  <path d="M320 150c-8-10-25-8-29 5-3 10 3 19 29 37 26-18 32-27 29-37-4-13-21-15-29-5z" fill="#ffffff"/>
+</svg>

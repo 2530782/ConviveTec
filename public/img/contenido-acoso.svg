@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Escudo de protección">
+  <rect width="640" height="360" fill="#12403c"/>
+  <circle cx="90" cy="300" r="120" fill="#1b6b63"/>
+  <path d="M320 50l120 40v80c0 75-52 125-120 145-68-20-120-70-120-145V90z" fill="#dcebe3"/>
+  <path d="M320 80l90 30v60c0 55-38 93-90 110z" fill="#ffffff"/>
+  <path d="M272 185l33 33 66-70" fill="none" stroke="#e2674a" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

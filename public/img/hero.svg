@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 440" role="img" aria-label="Dos personas dialogando con burbujas de conversación">
+  <!-- Fondo -->
+  <circle cx="260" cy="230" r="200" fill="#dcebe3"/>
+  <circle cx="420" cy="90" r="38" fill="#f4c35a"/>
+
+  <!-- Hojas decorativas -->
+  <path d="M70 360c-10-50 20-90 60-100-5 45-25 80-60 100z" fill="#1b6b63" opacity=".8"/>
+  <path d="M95 380c20-40 60-55 95-45-25 30-55 45-95 45z" fill="#1b6b63" opacity=".55"/>
+
+  <!-- Persona izquierda -->
+  <circle cx="175" cy="190" r="34" fill="#12403c"/>
+  <path d="M115 330c0-50 27-90 60-90s60 40 60 90z" fill="#1b6b63"/>
+  <rect x="115" y="328" width="120" height="14" rx="7" fill="#12403c"/>
+
+  <!-- Persona derecha -->
+  <circle cx="345" cy="200" r="32" fill="#c4502f"/>
+  <path d="M288 335c0-48 26-86 57-86s57 38 57 86z" fill="#e2674a"/>
+  <rect x="288" y="333" width="114" height="14" rx="7" fill="#c4502f"/>
+
+  <!-- Burbuja izquierda -->
+  <g>
+    <rect x="70" y="70" width="150" height="72" rx="22" fill="#ffffff"/>
+    <path d="M160 140l12 22 6-22z" fill="#ffffff"/>
+    <rect x="92" y="94" width="96" height="9" rx="4.5" fill="#1b6b63"/>
+    <rect x="92" y="112" width="64" height="9" rx="4.5" fill="#a9c9bf"/>
+  </g>
+
+  <!-- Burbuja derecha -->
+  <g>
+    <rect x="290" y="96" width="150" height="62" rx="22" fill="#12403c"/>
+    <path d="M330 156l-6 22 18-22z" fill="#12403c"/>
+    <path d="M354 116c-4-5-13-4-15 3-1 5 2 10 15 19 13-9 16-14 15-19-2-7-11-8-15-3z" fill="#e2674a"/>
+  </g>
+
+  <!-- Puntos de conversación -->
+  <circle cx="250" cy="250" r="6" fill="#12403c" opacity=".35"/>
+  <circle cx="265" cy="240" r="6" fill="#12403c" opacity=".55"/>
+  <circle cx="280" cy="230" r="6" fill="#12403c" opacity=".8"/>
+</svg>

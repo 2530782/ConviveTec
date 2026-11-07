@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#12403c">
+    <title>Panel · ConviveTec</title>
+
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/fuentes.css">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <div class="panel-layout">
+
+        <!-- =============================================================
+             Menú lateral (las opciones se muestran según el rol)
+             ============================================================= -->
+        <aside class="panel-lateral">
+            <div class="marca">
+                <img src="img/logo.svg" alt="">
+                ConviveTec
+            </div>
+
+            <nav aria-label="Secciones del panel">
+                <button type="button" class="nav-link" data-seccion="resumen" data-roles="admin orientador">
+                    <i class="bi bi-speedometer2"></i> Resumen
+                </button>
+                <button type="button" class="nav-link" data-seccion="casos" data-roles="admin orientador">
+                    <i class="bi bi-folder2-open"></i> Casos
+                </button>
+                <button type="button" class="nav-link" data-seccion="mediaciones" data-roles="admin orientador">
+                    <i class="bi bi-people"></i> Mediaciones
+                </button>
+                <button type="button" class="nav-link" data-seccion="canalizar" data-roles="docente">
+                    <i class="bi bi-send-plus"></i> Canalizar situación
+                </button>
+                <button type="button" class="nav-link" data-seccion="mis" data-roles="docente">
+                    <i class="bi bi-list-check"></i> Mis canalizaciones
+                </button>
+                <button type="button" class="nav-link" data-seccion="contenido" data-roles="admin">
+                    <i class="bi bi-journal-richtext"></i> Contenido formativo
+                </button>
+                <button type="button" class="nav-link" data-seccion="usuarios" data-roles="admin">
+                    <i class="bi bi-person-gear"></i> Usuarios
+                </button>
+                <button type="button" class="nav-link" data-seccion="bitacora" data-roles="admin">
+                    <i class="bi bi-shield-check"></i> Bitácora
+                </button>
+            </nav>
+
+            <div class="usuario-actual">
+                <div class="fw-bold text-white" id="nombreUsuario"></div>
+                <div class="small mb-2" id="rolUsuario"></div>
+                <a href="index.html" class="d-block small text-white-50 mb-2"><i class="bi bi-house"></i> Ir al sitio público</a>
+                <button type="button" class="btn btn-sm btn-light" id="btnSalir">
+                    <i class="bi bi-box-arrow-left"></i> Cerrar sesión
+                </button>
+            </div>
+        </aside>
+
+        <!-- =============================================================
+             Contenido principal
+             ============================================================= -->
+        <main class="panel-principal">
+            <div id="alertaGeneral" aria-live="polite"></div>
+
+            <!-- RESUMEN -->
+            <section id="sec-resumen" class="seccion-panel oculto">
+                <h1 class="h2 mb-1">Resumen</h1>
+                <p class="text-body-secondary">Panorama general de la convivencia en la comunidad escolar.</p>
+
+                <div class="row g-3 mb-4" id="tarjetasResumen"></div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="tarjeta-dato">
+                            <h2 class="h5">Reportes por tipo de situación</h2>
+                            <div id="graficaCategorias"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="tarjeta-dato">
+                            <h2 class="h5">Evaluación del prototipo</h2>
+                            <div id="resumenEvaluacion"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CASOS -->
+            <section id="sec-casos" class="seccion-panel oculto">
+                <h1 class="h2 mb-1">Casos reportados</h1>
+                <p class="text-body-secondary">
+                    <i class="bi bi-lock"></i> Solo el orientador asignado puede leer el detalle de un caso.
+                    Cada consulta queda registrada en la bitácora.
+                </p>
+
+                <div class="row g-2 mb-3">
+                    <div class="col-sm-4">
+                        <select id="filtroAsignacion" class="form-select" aria-label="Asignación">
+                            <option value="">Todos los casos</option>
+                            <option value="mios">Asignados a mí</option>
+                            <option value="sin_asignar">Sin asignar</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="filtroEstado" class="form-select" aria-label="Estado">
+                            <option value="">Cualquier estado</option>
+                            <option value="recibido">Recibido</option>
+                            <option value="en_revision">En revisión</option>
+                            <option value="en_atencion">En atención</option>
+                            <option value="cerrado">Cerrado</option>
+                            <option value="descartado">Descartado</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="filtroUrgencia" class="form-select" aria-label="Urgencia">
+                            <option value="">Cualquier urgencia</option>
+                            <option value="critica">Crítica</option>
+                            <option value="alta">Alta</option>
+                            <option value="media">Media</option>
+                            <option value="baja">Baja</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="tabla-ct table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Folio</th>
+                                <th>Situación</th>
+                                <th>Urgencia</th>
+                                <th>Estado</th>
+                                <th>Orientador</th>
+                                <th>Recibido</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaCasos"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- MEDIACIONES -->
+            <section id="sec-mediaciones" class="seccion-panel oculto">
+                <h1 class="h2 mb-1">Solicitudes de mediación</h1>
+                <p class="text-body-secondary">Programa sesiones de diálogo y registra los acuerdos.</p>
+
+                <div class="row g-2 mb-3">
+                    <div class="col-sm-4">
+                        <select id="filtroAsignacionMed" class="form-select" aria-label="Asignación">
+                            <option value="">Todas</option>
+                            <option value="mios">Asignadas a mí</option>
+                            <option value="sin_asignar">Sin asignar</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="filtroEstadoMed" class="form-select" aria-label="Estado">
+                            <option value="">Cualquier estado</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="programada">Programada</option>
+                            <option value="realizada">Realizada</option>
+                            <option value="cancelada">Cancelada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="tabla-ct table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Folio</th>
+                                <th>Grupo</th>
+                                <th>Estado</th>
+                                <th>Sesión</th>
+                                <th>Menor</th>
+                                <th>Orientador</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaMediaciones"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- CANALIZAR (DOCENTE) -->
+            <section id="sec-canalizar" class="seccion-panel oculto">
+                <h1 class="h2 mb-1">Canalizar una situación</h1>
+                <p class="text-body-secondary">Envía a orientación un conflicto que observaste en el aula. Tu nombre quedará registrado como docente que canaliza.</p>
+
+                <div id="alertaCanalizar"></div>
+
+                <form id="formCanalizar" class="panel-formulario" novalidate>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="canCategoria" class="form-label">Tipo de situación</label>
+                            <select id="canCategoria" class="form-select">
+                                <option value="">Selecciona</option>
+                                <option value="acoso">Acoso escolar</option>
+                                <option value="ciberacoso">Ciberacoso</option>
+                                <option value="discriminacion">Discriminación</option>
+                                <option value="conflicto_companeros">Conflicto entre compañeros</option>
+                                <option value="violencia_fisica">Violencia física</option>
+                                <option value="otro">Otra situación</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="canRelacion" class="form-label">¿Cómo lo supo?</label>
+                            <select id="canRelacion" class="form-select">
+                                <option value="lo_presencie">Lo presencié</option>
+                                <option value="me_contaron">Me lo contaron</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="canDescripcion" class="form-label">Descripción</label>
+                            <textarea id="canDescripcion" class="form-control" rows="5" maxlength="3000"></textarea>
+                        </div>
+                        <div class="col-md-7">
+                            <label for="canLugar" class="form-label">Lugar</label>
+                            <input type="text" id="canLugar" class="form-control" maxlength="120">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="canFecha" class="form-label">Fecha</label>
+                            <input type="date" id="canFecha" class="form-control">
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="canRiesgo">
+                                <label class="form-check-label fw-bold" for="canRiesgo">Hay riesgo inmediato para alguien</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Enviar a orientación</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- MIS CANALIZACIONES (DOCENTE) -->
+            <section id="sec-mis" class="seccion-panel oculto">
+                <h1 class="h2 mb-1">Mis canalizaciones</h1>
+                <p class="text-body-secondary">Estado de las situaciones que enviaste. El detalle de la atención es confidencial.</p>
+
+                <div class="tabla-ct table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Folio</th>
+                                <th>Situación</th>
+                                <th>Estado</th>
+                                <th>Enviado</th>
+                                <th>Última actualización</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaMis"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- CONTENIDO FORMATIVO (ADMIN) -->
+            <section id="sec-contenido" class="seccion-panel oculto">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                    <div>
+                        <h1 class="h2 mb-1">Contenido formativo</h1>
+                        <p class="text-body-secondary mb-0">Infografías, cápsulas y consejos que ve la comunidad.</p>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnNuevoContenido">
+                        <i class="bi bi-plus-lg"></i> Nuevo contenido
+                    </button>
+                </div>
+
+                <div class="tabla-ct table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Título</th>
+                                <th>Tipo</th>
+                                <th>Tema</th>
+                                <th>Publicado</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaContenido"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- USUARIOS (ADMIN) -->
+            <section id="sec-usuarios" class="seccion-panel oculto">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                    <div>
+                        <h1 class="h2 mb-1">Usuarios del personal</h1>
+                        <p class="text-body-secondary mb-0">Los alumnos no necesitan cuenta.</p>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnNuevoUsuario">
+                        <i class="bi bi-person-plus"></i> Nuevo usuario
+                    </button>
+                </div>
+
+                <div class="tabla-ct table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Rol</th>
+                                <th>Estado</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaUsuarios"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- BITÁCORA (ADMIN) -->
+            <section id="sec-bitacora" class="seccion-panel oculto">
+                <h1 class="h2 mb-1">Bitácora de auditoría</h1>
+                <p class="text-body-secondary">Quién consultó o modificó cada registro. No se guarda el contenido de los casos ni direcciones IP.</p>
+
+                <div class="tabla-ct table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Usuario</th>
+                                <th>Acción</th>
+                                <th>Registro</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaBitacora"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- =================================================================
+         Ventanas modales
+         ================================================================= -->
+
+    <!-- Detalle de un caso -->
+    <div class="modal fade" id="modalCaso" tabindex="-1" aria-labelledby="tituloCaso" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title h4 folio" id="tituloCaso"></h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body" id="cuerpoCaso"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detalle de una mediación -->
+    <div class="modal fade" id="modalMediacion" tabindex="-1" aria-labelledby="tituloMediacion" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title h4 folio" id="tituloMediacion"></h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body" id="cuerpoMediacion"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Asignar orientador (admin) -->
+    <div class="modal fade" id="modalAsignar" tabindex="-1" aria-labelledby="tituloAsignar" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="formAsignar">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="tituloAsignar">Asignar orientador</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="small text-body-secondary">El orientador asignado será la única persona que podrá ver el detalle.</p>
+                        <label for="selectOrientador" class="form-label">Orientador</label>
+                        <select id="selectOrientador" class="form-select"></select>
+                        <div id="alertaAsignar" class="mt-3"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Asignar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crear / editar contenido -->
+    <div class="modal fade" id="modalContenido" tabindex="-1" aria-labelledby="tituloContenido" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <form id="formContenido" novalidate>
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="tituloContenido">Contenido</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="conId">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="conTitulo" class="form-label">Título</label>
+                                <input type="text" id="conTitulo" class="form-control" maxlength="150">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="conTipo" class="form-label">Formato</label>
+                                <select id="conTipo" class="form-select">
+                                    <option value="infografia">Infografía</option>
+                                    <option value="capsula">Cápsula</option>
+                                    <option value="consejo">Consejo</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="conTema" class="form-label">Tema</label>
+                                <select id="conTema" class="form-select">
+                                    <option value="comunicacion_asertiva">Comunicación asertiva</option>
+                                    <option value="empatia">Empatía</option>
+                                    <option value="manejo_emociones">Manejo de emociones</option>
+                                    <option value="prevencion_acoso">Prevención del acoso</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="conResumen" class="form-label">Resumen</label>
+                                <input type="text" id="conResumen" class="form-control" maxlength="300">
+                            </div>
+                            <div class="col-12">
+                                <label for="conCuerpo" class="form-label">Contenido</label>
+                                <textarea id="conCuerpo" class="form-control" rows="8" maxlength="8000"></textarea>
+                            </div>
+                            <div class="col-sm-8">
+                                <label for="conImagen" class="form-label">Imagen (carpeta public/img)</label>
+                                <input type="text" id="conImagen" class="form-control" list="listaImagenes" placeholder="img/mi-imagen.png">
+                                <datalist id="listaImagenes"></datalist>
+                                <div class="form-text">Copia tu imagen a <code>public/img/</code> y escribe aquí su ruta.</div>
+                            </div>
+                            <div class="col-sm-4 d-flex align-items-center">
+                                <div class="form-check form-switch mt-3">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="conPublicado" checked>
+                                    <label class="form-check-label" for="conPublicado">Publicado</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="alertaContenido" class="mt-3"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crear / editar usuario -->
+    <div class="modal fade" id="modalUsuario" tabindex="-1" aria-labelledby="tituloUsuario" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="formUsuario" novalidate>
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="tituloUsuario">Usuario</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="usuId">
+                        <div class="mb-3">
+                            <label for="usuNombre" class="form-label">Nombre</label>
+                            <input type="text" id="usuNombre" class="form-control" maxlength="120">
+                        </div>
+                        <div class="mb-3">
+                            <label for="usuCorreo" class="form-label">Correo</label>
+                            <input type="email" id="usuCorreo" class="form-control" maxlength="150">
+                        </div>
+                        <div class="mb-3">
+                            <label for="usuRol" class="form-label">Rol</label>
+                            <select id="usuRol" class="form-select">
+                                <option value="orientador">Orientador</option>
+                                <option value="docente">Docente</option>
+                                <option value="admin">Administrador</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="usuPassword" class="form-label">Contraseña</label>
+                            <input type="password" id="usuPassword" class="form-control" autocomplete="new-password">
+                            <div class="form-text" id="ayudaPassword">Mínimo 8 caracteres.</div>
+                        </div>
+                        <div class="form-check form-switch" id="cajaActivo">
+                            <input class="form-check-input" type="checkbox" role="switch" id="usuActivo" checked>
+                            <label class="form-check-label" for="usuActivo">Cuenta activa</label>
+                        </div>
+                        <div id="alertaUsuario" class="mt-3"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/comun.js" defer></script>
+    <script src="js/panel.js" defer></script>
+</body>
+</html>

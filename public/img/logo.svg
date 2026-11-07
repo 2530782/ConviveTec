@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Logotipo de ConviveTec">
+  <!-- Burbuja de diálogo verde -->
+  <path d="M8 14c0-4.4 3.6-8 8-8h18c4.4 0 8 3.6 8 8v12c0 4.4-3.6 8-8 8H22l-8 7v-7.4c-3.5-.9-6-4-6-7.6z" fill="#1b6b63"/>
+  <!-- Burbuja de diálogo coral -->
+  <path d="M56 32c0-4.4-3.6-8-8-8H30c-4.4 0-8 3.6-8 8v12c0 4.4 3.6 8 8 8h12l8 7v-7.4c3.5-.9 6-4 6-7.6z" fill="#e2674a"/>
+  <!-- Corazón al centro -->
+  <path d="M39 33.5c-1.6-1.9-4.8-1.4-5.5 1-.5 1.8.6 3.6 5.5 7 4.9-3.4 6-5.2 5.5-7-.7-2.4-3.9-2.9-5.5-1z" fill="#ffffff"/>
+</svg>

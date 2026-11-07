@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Semáforo de las emociones">
+  <rect width="640" height="360" fill="#fbf1e2"/>
+  <rect x="250" y="30" width="140" height="300" rx="50" fill="#12403c"/>
+  <circle cx="320" cy="95" r="38" fill="#d6453a"/>
+  <circle cx="320" cy="180" r="38" fill="#f4c35a"/>
+  <circle cx="320" cy="265" r="38" fill="#5aa469"/>
+  <text x="430" y="105" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#12403c">Detente</text>
+  <text x="430" y="190" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#12403c">Piensa</text>
+  <text x="430" y="275" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#12403c">Actúa</text>
+</svg>

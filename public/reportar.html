@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Reporta de forma anónima una situación de acoso, ciberacoso, discriminación o conflicto escolar.">
+    <meta name="theme-color" content="#12403c">
+    <title>Reporte anónimo · ConviveTec</title>
+
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/fuentes.css">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <!-- Franja de ayuda inmediata -->
+    <div class="franja-ayuda">
+        <div class="container d-flex flex-wrap gap-2 justify-content-between">
+            <span><i class="bi bi-telephone-fill"></i> ¿Corres peligro ahora? Llama al <a href="tel:911">911</a></span>
+            <span>Línea de la Vida (24 h, gratuita): <a href="tel:8009112000">800 911 2000</a></span>
+        </div>
+    </div>
+
+    <!-- Menú principal -->
+    <nav class="navbar navbar-expand-lg navbar-ct sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.svg" alt="">
+                ConviveTec
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto gap-lg-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reportar.html">Reportar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="consultar.html">Consultar folio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mediacion.html">Mediación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contenido.html">Aprende</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-person-badge"></i> Personal</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="seccion">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9 col-xl-8">
+
+                        <div id="vistaFormulario">
+                            <span class="etiqueta mb-3"><i class="bi bi-incognito"></i> Sin nombre, sin cuenta</span>
+                            <h1>Hacer un reporte anónimo</h1>
+                            <p class="lead text-body-secondary">
+                                Cuéntanos lo que está pasando. No te pediremos tu nombre ni tu correo,
+                                y lo que escribas solo lo leerá la persona de orientación que atienda tu caso.
+                            </p>
+
+                            <div id="alerta" aria-live="polite"></div>
+
+                            <form id="formReporte" class="panel-formulario" novalidate>
+
+                                <!-- 1. Tipo de situación -->
+                                <fieldset class="mb-4">
+                                    <legend class="form-label fs-6">1. ¿Qué tipo de situación quieres reportar?</legend>
+                                    <div class="opciones-tarjeta">
+                                        <div class="opcion-tarjeta">
+                                            <input type="radio" name="categoria" id="cat-acoso" value="acoso">
+                                            <label for="cat-acoso"><i class="bi bi-person-exclamation"></i> Acoso escolar <small>Burlas, amenazas o exclusión que se repiten</small></label>
+                                        </div>
+                                        <div class="opcion-tarjeta">
+                                            <input type="radio" name="categoria" id="cat-ciber" value="ciberacoso">
+                                            <label for="cat-ciber"><i class="bi bi-phone-vibrate"></i> Ciberacoso <small>En redes sociales, chats o videojuegos</small></label>
+                                        </div>
+                                        <div class="opcion-tarjeta">
+                                            <input type="radio" name="categoria" id="cat-disc" value="discriminacion">
+                                            <label for="cat-disc"><i class="bi bi-slash-circle"></i> Discriminación <small>Por origen, apariencia, género, discapacidad u otra razón</small></label>
+                                        </div>
+                                        <div class="opcion-tarjeta">
+                                            <input type="radio" name="categoria" id="cat-conf" value="conflicto_companeros">
+                                            <label for="cat-conf"><i class="bi bi-chat-square-text"></i> Conflicto entre compañeros <small>Discusiones o pleitos que no se han resuelto</small></label>
+                                        </div>
+                                        <div class="opcion-tarjeta">
+                                            <input type="radio" name="categoria" id="cat-viol" value="violencia_fisica">
+                                            <label for="cat-viol"><i class="bi bi-hand-index"></i> Violencia física <small>Golpes, empujones o daño a tus cosas</small></label>
+                                        </div>
+                                        <div class="opcion-tarjeta">
+                                            <input type="radio" name="categoria" id="cat-otro" value="otro">
+                                            <label for="cat-otro"><i class="bi bi-three-dots"></i> Otra situación <small>Algo que afecta la convivencia</small></label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <!-- 2. Relación con la situación -->
+                                <fieldset class="mb-4">
+                                    <legend class="form-label fs-6">2. ¿Cómo te enteraste?</legend>
+                                    <div class="opciones-tarjeta">
+                                        <div class="opcion-tarjeta">
+                                            <input type="radio" name="relacion" id="rel-ocurre" value="me_ocurre">
+                                            <label for="rel-ocurre"><i class="bi bi-person"></i> Me está pasando a mí</label>
+                                        </div>
+                                        <div class="opcion-tarjeta">
+                                            <input type="radio" name="relacion" id="rel-vi" value="lo_presencie">
+                                            <label for="rel-vi"><i class="bi bi-eye"></i> Lo vi</label>
+                                        </div>
+                                        <div class="opcion-tarjeta">
+                                            <input type="radio" name="relacion" id="rel-contaron" value="me_contaron">
+                                            <label for="rel-contaron"><i class="bi bi-ear"></i> Me lo contaron</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <!-- 3. Descripción -->
+                                <div class="mb-4">
+                                    <label for="descripcion" class="form-label">3. Describe qué pasó</label>
+                                    <textarea id="descripcion" class="form-control" rows="6" maxlength="3000" placeholder="¿Qué sucedió? ¿Desde cuándo? ¿Quiénes participan?"></textarea>
+                                    <div class="d-flex justify-content-between form-text">
+                                        <span>Puedes mencionar a las personas involucradas. Si quieres seguir en el anonimato, no escribas tus propios datos.</span>
+                                        <span id="contador" class="ms-3 text-nowrap">0 / 3000</span>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Lugar y fecha (opcionales) -->
+                                <div class="row g-3 mb-4">
+                                    <div class="col-sm-7">
+                                        <label for="lugar" class="form-label">¿Dónde ocurrió? <span class="fw-normal text-body-secondary">(opcional)</span></label>
+                                        <input type="text" id="lugar" class="form-control" maxlength="120" placeholder="Ej. pasillo del edificio B, grupo de WhatsApp">
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <label for="fecha" class="form-label">¿Cuándo? <span class="fw-normal text-body-secondary">(opcional)</span></label>
+                                        <input type="date" id="fecha" class="form-control">
+                                    </div>
+                                </div>
+
+                                <!-- 5. Riesgo inmediato -->
+                                <div class="caja-riesgo mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="riesgo">
+                                        <label class="form-check-label fw-bold" for="riesgo">Alguien corre peligro ahora o en los próximos días</label>
+                                    </div>
+                                    <div class="form-text">Tu reporte se marcará como urgente para que se atienda primero.</div>
+                                </div>
+
+                                <div id="avisoRiesgo" class="alerta-911 mb-4 oculto" role="alert">
+                                    <strong><i class="bi bi-exclamation-triangle-fill"></i> Si el peligro es inmediato, no esperes:</strong>
+                                    llama al <a href="tel:911">911</a> o busca a un adulto de confianza ahora mismo.
+                                    Si te sientes muy mal emocionalmente, la Línea de la Vida atiende las 24 horas en el <a href="tel:8009112000">800 911 2000</a>.
+                                </div>
+
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="aceptaAviso">
+                                    <label class="form-check-label" for="aceptaAviso">
+                                        Leí el <a href="privacidad.html" target="_blank">aviso de privacidad</a> y entiendo que una persona de orientación revisará mi reporte.
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="btn btn-acento btn-lg w-100" id="btnEnviar">
+                                    <i class="bi bi-send"></i> Enviar reporte
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Resultado: folio y clave -->
+                        <div id="vistaResultado" class="oculto">
+                            <div class="caja-folio">
+                                <span class="icono-circulo"><i class="bi bi-check2-circle"></i></span>
+                                <h1 class="h2">Tu reporte fue enviado</h1>
+                                <p class="mb-4">Guarda estos datos. Son la <strong>única forma</strong> de consultar tu caso y no podemos recuperarlos.</p>
+
+                                <div class="row g-3 justify-content-center mb-4">
+                                    <div class="col-sm-6">
+                                        <div class="small fw-bold mb-1">FOLIO</div>
+                                        <div class="codigo-grande" id="resFolio"></div>
+                                        <div><button type="button" class="btn btn-link btn-sm" data-copiar="resFolio"><i class="bi bi-clipboard"></i> Copiar</button></div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="small fw-bold mb-1">CLAVE</div>
+                                        <div class="codigo-grande" id="resClave"></div>
+                                        <div><button type="button" class="btn btn-link btn-sm" data-copiar="resClave"><i class="bi bi-clipboard"></i> Copiar</button></div>
+                                    </div>
+                                </div>
+
+                                <div id="resRiesgo" class="alerta-911 text-start mb-4 oculto">
+                                    Marcaste que alguien corre peligro. Tu caso se atenderá con prioridad, pero si el peligro es inmediato llama al <a href="tel:911">911</a>.
+                                </div>
+
+                                <div class="d-flex flex-wrap gap-2 justify-content-center">
+                                    <a href="consultar.html" class="btn btn-primary">Consultar mi caso</a>
+                                    <a href="contenido.html" class="btn btn-outline-primary">Ver consejos</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="pie">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-5">
+                    <h2 class="h5 d-flex align-items-center gap-2">
+                        <img src="img/logo.svg" width="30" height="30" alt="">
+                        ConviveTec
+                    </h2>
+                    <p class="mb-0">Plataforma para la convivencia saludable y la prevención de conflictos. Proyecto académico de la Universidad Politécnica de Tulancingo.</p>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="h5">Ayuda inmediata</h2>
+                    <p class="mb-1">Emergencias: <a href="tel:911">911</a></p>
+                    <p class="mb-0">Línea de la Vida: <a href="tel:8009112000">800 911 2000</a></p>
+                </div>
+                <div class="col-md-3">
+                    <h2 class="h5">Información</h2>
+                    <p class="mb-1"><a href="privacidad.html">Aviso de privacidad</a></p>
+                    <p class="mb-0"><a href="evaluacion.html">Evalúa la plataforma</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Salida rápida -->
+    <button type="button" class="btn-salida" data-salida-rapida title="Sal de inmediato a otra página (o presiona Esc dos veces)">
+        <i class="bi bi-box-arrow-right"></i> Salida rápida
+        <small>o Esc dos veces</small>
+    </button>
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/comun.js" defer></script>
+    <script src="js/reportar.js" defer></script>
+</body>
+</html>

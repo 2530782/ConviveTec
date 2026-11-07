@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Círculos concéntricos que representan la respiración">
+  <rect width="640" height="360" fill="#dcebe3"/>
+  <circle cx="320" cy="180" r="150" fill="#c3dccf"/>
+  <circle cx="320" cy="180" r="110" fill="#a9cdbd"/>
+  <circle cx="320" cy="180" r="70" fill="#1b6b63"/>
+  <text x="320" y="196" text-anchor="middle" font-family="Georgia, serif" font-size="44" fill="#ffffff">4·4·6</text>
+</svg>

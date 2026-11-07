@@ -1,0 +1,37 @@
+{
+  "name": "convivetec",
+  "version": "1.0.0",
+  "description": "ConviveTec: plataforma web para la convivencia saludable y la prevención de conflictos en comunidades escolares",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "setup": "node src/scripts/init-db.js",
+    "generar-clave": "node -e \"console.log(require('crypto').randomBytes(32).toString('hex'))\""
+  },
+  "keywords": [
+    "convivencia",
+    "prevencion",
+    "conflictos",
+    "escuela"
+  ],
+  "author": "Macias Ortega, Méndez Aguirre, Castro Mendoza, Cabañas Salazar - UPT 403",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@fontsource/fraunces": "^5.3.0",
+    "@fontsource/nunito-sans": "^5.3.0",
+    "bcryptjs": "^3.0.3",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "compression": "^1.8.2",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.3",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.6"
+  }
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Inicio de sesión para orientación, docentes y administración.">
+    <meta name="theme-color" content="#12403c">
+    <title>Acceso para personal · ConviveTec</title>
+
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/fuentes.css">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <!-- Franja de ayuda inmediata -->
+    <div class="franja-ayuda">
+        <div class="container d-flex flex-wrap gap-2 justify-content-between">
+            <span><i class="bi bi-telephone-fill"></i> ¿Corres peligro ahora? Llama al <a href="tel:911">911</a></span>
+            <span>Línea de la Vida (24 h, gratuita): <a href="tel:8009112000">800 911 2000</a></span>
+        </div>
+    </div>
+
+    <!-- Menú principal -->
+    <nav class="navbar navbar-expand-lg navbar-ct sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.svg" alt="">
+                ConviveTec
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto gap-lg-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reportar.html">Reportar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="consultar.html">Consultar folio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mediacion.html">Mediación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contenido.html">Aprende</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-person-badge"></i> Personal</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="seccion">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-7 col-lg-5">
+                        <div class="panel-formulario">
+                            <div class="text-center mb-4">
+                                <img src="img/logo.svg" width="64" height="64" alt="">
+                                <h1 class="h2 mt-3">Acceso para personal</h1>
+                                <p class="text-body-secondary mb-0">Orientación, docentes y administración.</p>
+                            </div>
+
+                            <div id="alerta" aria-live="polite"></div>
+
+                            <form id="formLogin" novalidate>
+                                <div class="mb-3">
+                                    <label for="correo" class="form-label">Correo institucional</label>
+                                    <input type="email" id="correo" class="form-control" autocomplete="username">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="password" class="form-label">Contraseña</label>
+                                    <input type="password" id="password" class="form-control" autocomplete="current-password">
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100" id="btnEntrar">Iniciar sesión</button>
+                            </form>
+
+                            <p class="small text-body-secondary mt-4 mb-0 text-center">
+                                ¿Eres alumno? No necesitas cuenta: <a href="reportar.html">haz un reporte anónimo</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="pie">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-5">
+                    <h2 class="h5 d-flex align-items-center gap-2">
+                        <img src="img/logo.svg" width="30" height="30" alt="">
+                        ConviveTec
+                    </h2>
+                    <p class="mb-0">Plataforma para la convivencia saludable y la prevención de conflictos. Proyecto académico de la Universidad Politécnica de Tulancingo.</p>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="h5">Ayuda inmediata</h2>
+                    <p class="mb-1">Emergencias: <a href="tel:911">911</a></p>
+                    <p class="mb-0">Línea de la Vida: <a href="tel:8009112000">800 911 2000</a></p>
+                </div>
+                <div class="col-md-3">
+                    <h2 class="h5">Información</h2>
+                    <p class="mb-1"><a href="privacidad.html">Aviso de privacidad</a></p>
+                    <p class="mb-0"><a href="evaluacion.html">Evalúa la plataforma</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Salida rápida -->
+    <button type="button" class="btn-salida" data-salida-rapida title="Sal de inmediato a otra página (o presiona Esc dos veces)">
+        <i class="bi bi-box-arrow-right"></i> Salida rápida
+        <small>o Esc dos veces</small>
+    </button>
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/comun.js" defer></script>
+    <script src="js/login.js" defer></script>
+</body>
+</html>

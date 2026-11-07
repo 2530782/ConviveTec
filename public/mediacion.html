@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Solicita una sesión de diálogo acompañada por orientación.">
+    <meta name="theme-color" content="#12403c">
+    <title>Solicitar mediación · ConviveTec</title>
+
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/fuentes.css">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <!-- Franja de ayuda inmediata -->
+    <div class="franja-ayuda">
+        <div class="container d-flex flex-wrap gap-2 justify-content-between">
+            <span><i class="bi bi-telephone-fill"></i> ¿Corres peligro ahora? Llama al <a href="tel:911">911</a></span>
+            <span>Línea de la Vida (24 h, gratuita): <a href="tel:8009112000">800 911 2000</a></span>
+        </div>
+    </div>
+
+    <!-- Menú principal -->
+    <nav class="navbar navbar-expand-lg navbar-ct sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.svg" alt="">
+                ConviveTec
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto gap-lg-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reportar.html">Reportar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="consultar.html">Consultar folio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mediacion.html">Mediación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contenido.html">Aprende</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-person-badge"></i> Personal</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="seccion">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-5">
+                        <span class="etiqueta mb-3"><i class="bi bi-people"></i> Diálogo acompañado</span>
+                        <h1>Solicitar mediación</h1>
+                        <p class="lead text-body-secondary">
+                            La mediación es una conversación entre las personas en conflicto, guiada por
+                            alguien de orientación que no toma partido. El objetivo es entenderse y llegar a acuerdos.
+                        </p>
+
+                        <h2 class="h5 mt-4">¿Cuándo sirve?</h2>
+                        <ul class="text-body-secondary">
+                            <li>Desacuerdos en equipos de trabajo o en el grupo.</li>
+                            <li>Malentendidos que crecieron y ya no se hablan.</li>
+                            <li>Conflictos que ambas partes quieren resolver.</li>
+                        </ul>
+
+                        <h2 class="h5 mt-4">¿Cuándo no?</h2>
+                        <p class="text-body-secondary">
+                            Si hay acoso, amenazas o violencia, la mediación no es lo primero:
+                            mejor <a href="reportar.html">haz un reporte</a> para que orientación intervenga y te proteja.
+                        </p>
+
+                        <div class="tarjeta-funcion mt-4">
+                            <h2 class="h6"><i class="bi bi-lock"></i> Sobre tus datos</h2>
+                            <p class="small mb-0 text-body-secondary">
+                                Para agendar la sesión necesitamos tu nombre y un medio de contacto.
+                                Se guardan cifrados y solo los ve el orientador asignado.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div id="alerta" aria-live="polite"></div>
+
+                        <form id="formMediacion" class="panel-formulario" novalidate>
+                            <div class="row g-3">
+                                <div class="col-sm-8">
+                                    <label for="nombre" class="form-label">Tu nombre</label>
+                                    <input type="text" id="nombre" class="form-control" maxlength="120" autocomplete="name">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="grupo" class="form-label">Grupo <span class="fw-normal text-body-secondary">(opcional)</span></label>
+                                    <input type="text" id="grupo" class="form-control" maxlength="30" placeholder="Ej. 403">
+                                </div>
+                                <div class="col-12">
+                                    <label for="contacto" class="form-label">Correo o teléfono para avisarte</label>
+                                    <input type="text" id="contacto" class="form-control" maxlength="150">
+                                </div>
+                                <div class="col-12">
+                                    <label for="partes" class="form-label">¿Con quién quieres dialogar?</label>
+                                    <input type="text" id="partes" class="form-control" maxlength="500" placeholder="Nombre o descripción (ej. compañeros de mi equipo de proyecto)">
+                                </div>
+                                <div class="col-12">
+                                    <label for="motivo" class="form-label">¿Qué está pasando?</label>
+                                    <textarea id="motivo" class="form-control" rows="5" maxlength="2000"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label for="disponibilidad" class="form-label">¿Cuándo puedes asistir? <span class="fw-normal text-body-secondary">(opcional)</span></label>
+                                    <input type="text" id="disponibilidad" class="form-control" maxlength="150" placeholder="Ej. martes y jueves después de las 13:00">
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="caja-riesgo">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" role="switch" id="esMenor">
+                                            <label class="form-check-label fw-bold" for="esMenor">Soy menor de 18 años</label>
+                                        </div>
+                                        <div id="cajaConsentimiento" class="form-check mt-2 oculto">
+                                            <input class="form-check-input" type="checkbox" id="consentimiento">
+                                            <label class="form-check-label" for="consentimiento">
+                                                Mi madre, padre o tutor está enterado y de acuerdo con que participe en la mediación.
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="aceptaAviso">
+                                        <label class="form-check-label" for="aceptaAviso">
+                                            Acepto el <a href="privacidad.html" target="_blank">aviso de privacidad</a>.
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100" id="btnEnviar">
+                                        <i class="bi bi-calendar-heart"></i> Solicitar mediación
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Resultado -->
+                        <div id="vistaResultado" class="caja-folio oculto">
+                            <span class="icono-circulo"><i class="bi bi-check2-circle"></i></span>
+                            <h2>Solicitud enviada</h2>
+                            <p class="mb-4">Un orientador te contactará para acordar la fecha. Con estos datos puedes consultar si ya está programada.</p>
+                            <div class="row g-3 justify-content-center mb-3">
+                                <div class="col-sm-6">
+                                    <div class="small fw-bold mb-1">FOLIO</div>
+                                    <div class="codigo-grande" id="resFolio"></div>
+                                    <div><button type="button" class="btn btn-link btn-sm" data-copiar="resFolio"><i class="bi bi-clipboard"></i> Copiar</button></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="small fw-bold mb-1">CLAVE</div>
+                                    <div class="codigo-grande" id="resClave"></div>
+                                    <div><button type="button" class="btn btn-link btn-sm" data-copiar="resClave"><i class="bi bi-clipboard"></i> Copiar</button></div>
+                                </div>
+                            </div>
+                            <a href="consultar.html" class="btn btn-primary">Consultar mi solicitud</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="pie">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-5">
+                    <h2 class="h5 d-flex align-items-center gap-2">
+                        <img src="img/logo.svg" width="30" height="30" alt="">
+                        ConviveTec
+                    </h2>
+                    <p class="mb-0">Plataforma para la convivencia saludable y la prevención de conflictos. Proyecto académico de la Universidad Politécnica de Tulancingo.</p>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="h5">Ayuda inmediata</h2>
+                    <p class="mb-1">Emergencias: <a href="tel:911">911</a></p>
+                    <p class="mb-0">Línea de la Vida: <a href="tel:8009112000">800 911 2000</a></p>
+                </div>
+                <div class="col-md-3">
+                    <h2 class="h5">Información</h2>
+                    <p class="mb-1"><a href="privacidad.html">Aviso de privacidad</a></p>
+                    <p class="mb-0"><a href="evaluacion.html">Evalúa la plataforma</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Salida rápida -->
+    <button type="button" class="btn-salida" data-salida-rapida title="Sal de inmediato a otra página (o presiona Esc dos veces)">
+        <i class="bi bi-box-arrow-right"></i> Salida rápida
+        <small>o Esc dos veces</small>
+    </button>
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/comun.js" defer></script>
+    <script src="js/mediacion.js" defer></script>
+</body>
+</html>

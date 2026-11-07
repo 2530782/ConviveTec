@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Teléfono con el botón de compartir tachado">
+  <rect width="640" height="360" fill="#fcefd0"/>
+  <rect x="250" y="30" width="140" height="300" rx="26" fill="#12403c"/>
+  <rect x="264" y="56" width="112" height="230" rx="10" fill="#ffffff"/>
+  <circle cx="320" cy="308" r="10" fill="#3d5f5b"/>
+  <!-- Icono de compartir -->
+  <circle cx="295" cy="170" r="14" fill="#1b6b63"/>
+  <circle cx="348" cy="138" r="14" fill="#1b6b63"/>
+  <circle cx="348" cy="202" r="14" fill="#1b6b63"/>
+  <path d="M295 170l53-32M295 170l53 32" stroke="#1b6b63" stroke-width="8"/>
+  <!-- Prohibido -->
+  <circle cx="320" cy="170" r="70" fill="none" stroke="#e2674a" stroke-width="14"/>
+  <path d="M271 121l98 98" stroke="#e2674a" stroke-width="14" stroke-linecap="round"/>
+</svg>
